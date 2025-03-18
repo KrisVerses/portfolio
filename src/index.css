@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+
+  @layer components {
+    This directive is used to define a specific layer for your CSS rules. 
+    Layers help in organizing and managing the CSS code by grouping related styles together. 
+    In this case, the styles within the @layer components block are part of the 'components' layer.
+  }
+
+  .container {
+    @apply mx-auto px-4;
+    The @apply directive is used to include a set of utility classes from a CSS framework (like Tailwind CSS) 
+    into a single class. Here, 'mx-auto' centers the container horizontally, and 'px-4' adds horizontal padding.
+    max-width: 1200px;
+    This sets the maximum width of the container to 1200 pixels.
+  }
+*/
+@layer components {
+  .container {
+    @apply mx-auto px-4;
+    max-width: 1200px;
+  }
+}

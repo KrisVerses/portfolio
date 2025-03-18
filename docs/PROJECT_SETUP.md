@@ -17,12 +17,39 @@ npm run dev
 
 ### 2. Add TailwindCSS
 ```bash
-# Install Tailwind and its peer dependencies
-npm install -D tailwindcss postcss autoprefixer
+# Install specific versions of Tailwind and its peer dependencies
+npm install -D tailwindcss@3.4.1 postcss@8.4.35 autoprefixer@10.4.17
 
 # Generate Tailwind and PostCSS config files
 npx tailwindcss init -p
 ```
+
+If you encounter any issues with the initialization:
+1. First, remove existing installations:
+   ```bash
+   npm uninstall tailwindcss postcss autoprefixer
+   ```
+2. Then install specific versions:
+   ```bash
+   npm install -D tailwindcss@3.4.1 postcss@8.4.35 autoprefixer@10.4.17
+   ```
+3. Create configuration files:
+   ```bash
+   npx tailwindcss init -p
+   ```
+4. Verify your `postcss.config.js`:
+   ```javascript
+   export default {
+     plugins: {
+       tailwindcss: {},
+       autoprefixer: {},
+     },
+   }
+   ```
+5. Restart your development server:
+   ```bash
+   npm run dev
+   ```
 
 Update `tailwind.config.js`:
 ```javascript
@@ -329,4 +356,158 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-``` 
+```
+
+## Git Workflow & Common Issues
+
+### Initial Git Setup
+```bash
+# Initialize Git repository
+git init
+
+# Add remote repository
+git remote add origin <your-repository-url>
+
+# Create and switch to main branch (if not already on main)
+git checkout -b main
+```
+
+### Common Issues When Pushing to Main
+
+1. **No Remote Repository**
+   ```bash
+   # Check if remote exists
+   git remote -v
+   
+   # If no remote, add it
+   git remote add origin <your-repository-url>
+   ```
+
+2. **Authentication Issues**
+   - Ensure you're logged in to GitHub
+   - Use personal access token if password authentication is disabled
+   - Configure Git credentials:
+     ```bash
+     git config --global user.name "Your Name"
+     git config --global user.email "your.email@example.com"
+     ```
+
+3. **Branch Protection Rules**
+   - Check if main branch is protected in GitHub repository settings
+   - You might need to:
+     - Create a pull request instead of direct push
+     - Get repository owner approval
+     - Disable branch protection temporarily
+
+4. **Uncommitted Changes**
+   ```bash
+   # Check status
+   git status
+   
+   # Add changes
+   git add .
+   
+   # Commit changes
+   git commit -m "Your commit message"
+   ```
+
+5. **Out of Sync with Remote**
+   ```bash
+   # Fetch latest changes
+   git fetch origin
+   
+   # Pull changes before pushing
+   git pull origin main
+   
+   # Resolve any conflicts
+   # Then push
+   git push origin main
+   ```
+
+### Basic Git Workflow
+```bash
+# Check status
+git status
+
+# Add changes
+git add .
+
+# Commit changes
+git commit -m "Your commit message"
+
+# Push to remote
+git push origin main
+```
+
+### Branch Protection Best Practices
+1. Create feature branches for new work:
+   ```bash
+   # Create and switch to new branch
+   git checkout -b feature/your-feature-name
+   
+   # Make changes and commit
+   git add .
+   git commit -m "Add new feature"
+   
+   # Push feature branch
+   git push origin feature/your-feature-name
+   ```
+
+2. Create pull requests:
+   - Push to feature branch
+   - Create PR on GitHub
+   - Get code review
+   - Merge to main
+
+### Troubleshooting Steps
+1. Check Git status:
+   ```bash
+   git status
+   ```
+
+2. Verify remote configuration:
+   ```bash
+   git remote -v
+   ```
+
+3. Check branch name:
+   ```bash
+   git branch
+   ```
+
+4. View Git configuration:
+   ```bash
+   git config --list
+   ```
+
+5. Check for authentication:
+   ```bash
+   # Test SSH connection to GitHub
+   ssh -T git@github.com
+   ```
+
+### Common Error Messages & Solutions
+
+1. **"Permission denied"**
+   - Check repository permissions
+   - Verify authentication method
+   - Ensure SSH key is added to GitHub
+
+2. **"Updates were rejected"**
+   - Pull latest changes first
+   - Resolve conflicts
+   - Push again
+
+3. **"Remote branch doesn't exist"**
+   - Create branch locally
+   - Push with -u flag:
+     ```bash
+     git push -u origin main
+     ```
+
+4. **"Authentication failed"**
+   - Update credentials
+   - Use personal access token
+   - Check SSH key configuration
+
+Remember: Always pull before pushing to avoid conflicts, and consider using feature branches for new work. 
