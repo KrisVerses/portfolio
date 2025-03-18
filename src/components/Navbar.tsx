@@ -31,19 +31,13 @@ const navLinkStyles =
   "px-6 font-inter hover:text-accent transition-all duration-200 ease-in-out inline-block transform hover:scale-[1.1] relative after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:h-[1px] after:w-0 hover:after:w-1/2 after:transition-all after:duration-300 after:bg-accent";
 const Navbar = () => {
   return (
-    <header className="container flex justify-center sm:justify-between items-center py-4 px-8">
+    <header className="container flex justify-center sm:justify-between items-center px-8">
       <figure className="flex items-center space-x-4">
         <img
-          className="max-h-52"
-          src="../../public/images/KV-Logo.png"
+          className="max-h-60"
+          src="../../public/images/Logo.png"
           alt="logo for site"
         />
-        <div className="font-inter tracking-wide font-bold hidden sm:block">
-          <div className="text-md">
-            <p>Kris Verses</p>
-          </div>
-          <p className="text-[12px] font-light py-2">Creative Developer</p>
-        </div>
       </figure>
       <nav className="hidden sm:block">
         <ul className="flex">
