@@ -19,8 +19,12 @@
   }
 */
 @layer components {
+  .font-inter {
+    font-family: "Inter", sans-serif;
+  }
+
   .container {
     @apply mx-auto px-4;
-    max-width: 1200px;
+    max-width: max-w-screen;
   }
 }
